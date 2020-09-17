@@ -2,10 +2,10 @@
 <html lang = 'en-US' dir = 'ltr'>
   <head>
   <meta charset = 'utf-8'>
-	<title>Pure JS / CSS / HTML Template</title>
+  <title>Pure JS / CSS / HTML Template</title>
   <style type = 'text/css'>
-		* { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; box-sizing: border-box; }
-    /* remove all css default styles. type HAS to be defined, else old-ass browsers like IE will never execute it */
+	* { margin: 0; padding: 0; border: 0; font-size: 100%; box-sizing: border-box; }
+    /* remove all CSS default styles. text/css HAS to be defined, else old-ass browsers like IE will never execute it, which is poor degradation. */
 
     main, article, aside, details, figcaption, figure,
     footer, header, hgroup, menu, nav, section {
@@ -16,23 +16,22 @@
 
 	</style> <!-- !important -->
 	<style type = 'text/css'>
-    body { padding: 8px; }
+    	body { padding: 8px; }
 
 		.centered { text-align: center; }
-    .js-enabled { display: none; }
-
+    	.js-enabled { display: none; }
+		
 	</style>
 
 	<!-- <script src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script> -->
-  <!-- <script> window.jQuery || document.write('<script src = "jquery-1.12.4.js><\/script>') </script> -->
-
+  	<!-- <script> window.jQuery || document.write('<script src = "jquery-1.12.4.js><\/script>') </script> -->
 	<!-- <script src = 'normalize-1.0.3.js'></script> -->
+	  
 	<script src = 'ready-1.2.6.js'></script> <!-- https://github.com/Kithraya/DOMContentLoaded -->
 	<script>
-  "main nav section".replace(/w+/g, function(a) { document.createElement(a); }); // mini-html5shiv.
+ 	"main nav section".replace(/w+/g, function(a) { document.createElement(a); }); // mini-html5shiv.
 
   // I personally exclude all browsers pre IE-11, but I like using <main> for both obsolete and modern browsers, so I compat-define it here.
-  // add supports box-sizing
 
   </script>
   <script id = 'uncomment-for-vanilla'>
@@ -46,20 +45,19 @@
   <script>
   function removeNode(node) { if (node.parentNode) { node.parentNode.removeChild(node) } } // remove a node from the tree, unless it's not in the tree already
 
-	DOMContentLoaded(function(e) {
-		removeNode( document.getElementById('js-disabled') );
+  DOMContentLoaded(function(e) {
+		
+	var noscript = document.getElementById('js-disabled');
+	var main = document.getElementById('js-enabled');
+		
+	removeNode( noscript );
+	main.style.display = 'block';
 
-		var main = document.getElementById('js-enabled');
-
-		main.style.display = 'block';
-
-	//	var blank = []; for (var i=0; i<50000000;i++) {blank.push[i];}
-
-  });// eh
-	</script>
+  });
+  </script>
   </head>
 	<body>
-	<noscript id = 'js-disabled'> <!-- has to be within a noscript, else users that have JS enabled but are waiting for DOMContentLoaded to fire will still see that code. -->
+	<noscript id = 'js-disabled'> <!-- has to be within a noscript, else users that have JS enabled but are waiting for DOMContentLoaded to fire will still see this. -->
 	  <div class = 'centered'>
   		<h3>Hello. This site requires JavaScript to run.</h3>
       <br>
@@ -72,8 +70,6 @@
 	</noscript>
 	<main id = 'js-enabled'>
 	  <!-- obsolete browsers, non obsolete browsers -->
-
-
 	</main>
 	</body>
 </html>
