@@ -4,7 +4,7 @@
   <meta charset = 'utf-8'>
   <title>Pure JS / CSS / HTML Template</title>
   <style type = 'text/css'>
-	* { margin: 0; padding: 0; border: 0; font-size: 100%; box-sizing: border-box; }
+    * { margin: 0; padding: 0; border: 0; font-size: 100%; box-sizing: border-box; }
     /* remove all CSS default styles. text/css HAS to be defined, else old-ass browsers like IE will never execute it, which is poor degradation. */
 
     main, article, aside, details, figcaption, figure,
@@ -18,8 +18,8 @@
 	<style type = 'text/css'>
     	body { padding: 8px; }
 
-		.centered { text-align: center; }
-    	.js-enabled { display: none; }
+	.centered { text-align: center; }
+    	.js { display: none; }
 		
 	</style>
 
@@ -43,21 +43,21 @@
   */
   </script>
   <script>
-  function removeNode(node) { if (node.parentNode) { node.parentNode.removeChild(node) } } // remove a node from the tree, unless it's not in the tree already
+  function remove(node) { if (node.parentNode) { node.parentNode.removeChild(node) } } // remove a node from the tree, unless it's not in the tree already
 
   DOMContentLoaded(function(e) {
 		
 	var noscript = document.getElementById('js-disabled');
 	var main = document.getElementById('js-enabled');
 		
-	removeNode( noscript );
+	remove( noscript );
 	main.style.display = 'block';
 
   });
   </script>
   </head>
 	<body>
-	<noscript id = 'js-disabled'> <!-- has to be within a noscript, else users that have JS enabled but are waiting for DOMContentLoaded to fire will still see this. -->
+	<noscript id = 'no-js'> <!-- has to be within a noscript, else users that have JS enabled but are waiting for DOMContentLoaded to fire will still see this. -->
 	  <div class = 'centered'>
   		<h3>Hello. This site requires JavaScript to run.</h3>
       <br>
@@ -68,7 +68,7 @@
   		<a href = 'https://www.google.com'>Go to Google</a>
 	  </div>
 	</noscript>
-	<main id = 'js-enabled'>
+	<main id = 'js'>
 	  <!-- obsolete browsers, non obsolete browsers -->
 	</main>
 	</body>
